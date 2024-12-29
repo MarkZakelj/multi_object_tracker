@@ -85,10 +85,15 @@ class ThreadSafeDBInterface:
         self.conn.commit()
         self.conn.close()
         self._lock.release()
-
-def get_track_ids():
+        
+def get_videos():
     with ThreadSafeDBInterface() as cursor:
-        cursor.execute("SELECT DISTINCT track_id FROM tracking")
+        cursor.execute("SELECT DISTINCT video_id FROM tracking")
+        return [str(row[0]) for row in cursor.fetchall()]
+
+def get_track_ids(video_id):
+    with ThreadSafeDBInterface() as cursor:
+        cursor.execute("SELECT DISTINCT track_id FROM tracking WHERE video_id = ?", (video_id,))
         return [str(row[0]) for row in cursor.fetchall()]
 
 def get_trajectory_with_confidence(track_id):

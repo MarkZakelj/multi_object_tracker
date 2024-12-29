@@ -2,7 +2,7 @@ import cv2
 import streamlit as st
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
-from database import get_track_ids, get_trajectory_with_confidence
+from database import get_track_ids, get_trajectory_with_confidence, get_videos
 
 def get_video_info(video_path):
    cap = cv2.VideoCapture(video_path)
@@ -87,7 +87,9 @@ def main():
     st.title("Object Tracking Visualization")
     
     with st.sidebar:
-        track_ids = get_track_ids()
+        videos = get_videos()
+        selected_video = st.selectbox("Select Video", videos)
+        track_ids = get_track_ids(selected_video)
         selected_track = st.selectbox("Select Track ID", track_ids)
         single_frame_view = st.checkbox("Single Frame View", False)
         show_boxes = st.checkbox("Show Bounding Boxes", False)
@@ -117,7 +119,6 @@ def main():
             if img:
                 st.image(img, caption=f"Track ID: {selected_track}")
             if not single_frame_view:
-                print("executed")
                 dframe = pd.DataFrame(data=data, columns=['Frame', 'Left', 'Top', 'Right', 'Bottom', 'Confidence'])
                 for col in ['Left', 'Top', 'Right', 'Bottom']:
                     dframe[col] = dframe[col].astype(int)
