@@ -111,7 +111,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--video', type=str, default='data/cars.mp4', help='Path to input video file')
     parser.add_argument('--weights', type=str, default='model/yolov4.weights', help='Path to YOLO weights')
-    parser.add_argument('--cfg', type=str, default='model/yolov4.cfg', help='Path to YOLO config')
+    parser.add_argument('--cfg', type=str, default='model_cfg/yolov4.cfg', help='Path to YOLO config')
     
     args = parser.parse_args()
     

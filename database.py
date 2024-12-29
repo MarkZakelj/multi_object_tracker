@@ -9,7 +9,7 @@ class DBInterface:
     _connection = None
     _lock = Lock()
 
-    def __init__(cls, db_path):
+    def __new__(cls, db_path):
         if cls._instance is None:
             cls._instance = super(DBInterface, cls).__new__(cls)
             cls._instance._db_path = db_path
