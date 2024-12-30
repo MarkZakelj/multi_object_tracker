@@ -17,3 +17,6 @@ Use Deep SORT algorithm to track objects in a video, then visualize the resultin
 - `database.py`: Features a simple interface to a sqlite database, used to write and read tracking information.
 - `mobilenet.py`: Embed an image to a single dimensional vector, used for feature comparison in the deep sort algorithm.
 - `visualize.py`: Visualize the resulting tracks in a simple streamlit web app. Select the video and trackID to visualize the whole trajectory or view a single frame and the matching bounding box, along with the detection confidence.
+- `data` folder: Holds the videos and the class names for YOLO object detector.
+- `model_cfg` folder: Holds the configuration files for YOLO models.
+- `model` folder: Holds the weights for YOLO models.
