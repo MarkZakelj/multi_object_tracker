@@ -1,3 +1,8 @@
+"""
+Database interface to write track info to sqlite database
+Includes thread safe option for multithreaded apps (streamlit)
+"""
+
 import sqlite3
 from threading import Lock
 from datetime import datetime
@@ -7,7 +12,6 @@ DEFAULT_DB_PATH = 'tracking2.db'
 class DBInterface:
     _instance = None
     _connection = None
-    _lock = Lock()
 
     def __new__(cls, db_path):
         if cls._instance is None:

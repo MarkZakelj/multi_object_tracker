@@ -1,3 +1,7 @@
+"""
+Track multiple objects in a video using deep sort algorithm
+"""
+
 import cv2
 import numpy as np
 from deep_sort_realtime.deepsort_tracker import DeepSort

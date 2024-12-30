@@ -1,3 +1,8 @@
+"""
+Streamlit app for object tracks visualization.
+Reads data from the sqlite database
+"""
+
 import cv2
 import streamlit as st
 import pandas as pd
@@ -96,7 +101,7 @@ def main():
         st.text("Applicable to single-frame view:")
         show_actual_image = st.checkbox("Show actual image", False)
         
-    image_frames, dimensions = get_video_info('data/cars.mp4')
+    image_frames, dimensions = get_video_info(selected_video)
     
     if selected_track:
         data = get_trajectory_with_confidence(selected_track)

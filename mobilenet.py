@@ -1,10 +1,13 @@
+"""
+Create image embeddings used in deep sort algorithm
+"""
+
 import torch
 import torchvision.models as models
 import torchvision.transforms as transforms
 from PIL import Image
 import numpy as np
-from typing import Union
-import time
+
 
 class MobileNetEmbedder:
     def __init__(self):
@@ -13,7 +16,7 @@ class MobileNetEmbedder:
         self.model.eval()
 
         self.transform = transforms.Compose([
-            transforms.Resize(224),  # Direct resize to target size
+            transforms.Resize(224),
             transforms.ToTensor(),
             transforms.Normalize(
                 mean=[0.485, 0.456, 0.406],
