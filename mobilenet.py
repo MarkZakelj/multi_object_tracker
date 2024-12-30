@@ -11,7 +11,7 @@ import numpy as np
 
 class MobileNetEmbedder:
     def __init__(self):
-        self.model = models.mobilenet_v2(pretrained=True)
+        self.model = models.mobilenet_v2(weights=models.MobileNet_V2_Weights.DEFAULT)
         self.model = torch.nn.Sequential(*list(self.model.children())[:-1])
         self.model.eval()
 
